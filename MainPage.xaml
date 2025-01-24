@@ -1,0 +1,27 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <!-- Etiqueta de bienvenida -->
+        <Label Text="¡Bienvenido a .NET MAUI!"
+               FontSize="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+        <!-- Botón inicial (mantendremos tu funcionalidad existente) -->
+        <Button Text="Haz clic aquí"
+                Clicked="OnButtonClicked"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
+        <!-- Botón para cargar los datos del albarán de origen -->
+        <Button Text="Cargar Albarán Origen"
+                Clicked="OnLoadAlbaranClicked"
+                HorizontalOptions="Center" />
+
+        <!-- Botón para cargar las líneas del albarán de origen -->
+        <Button Text="Cargar Líneas Origen"
+                Clicked="OnLoadLineasClicked"
+                HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
