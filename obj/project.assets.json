@@ -81977,6 +81977,7 @@
       "Microsoft.Data.SqlClient >= 5.2.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.1",
+      "Microsoft.Extensions.DependencyInjection >= 9.0.1",
       "Microsoft.Extensions.Logging.Debug >= 8.0.1",
       "Microsoft.Maui.Controls >= 8.0.100",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.100",
@@ -81986,6 +81987,7 @@
       "Microsoft.Data.SqlClient >= 5.2.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.1",
+      "Microsoft.Extensions.DependencyInjection >= 9.0.1",
       "Microsoft.Extensions.Logging.Debug >= 8.0.1",
       "Microsoft.Maui.Controls >= 8.0.100",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.100",
@@ -81995,6 +81997,7 @@
       "Microsoft.Data.SqlClient >= 5.2.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.1",
+      "Microsoft.Extensions.DependencyInjection >= 9.0.1",
       "Microsoft.Extensions.Logging.Debug >= 8.0.1",
       "Microsoft.Maui.Controls >= 8.0.100",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.100",
@@ -82004,6 +82007,7 @@
       "Microsoft.Data.SqlClient >= 5.2.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.1",
+      "Microsoft.Extensions.DependencyInjection >= 9.0.1",
       "Microsoft.Extensions.Logging.Debug >= 8.0.1",
       "Microsoft.Maui.Controls >= 8.0.100",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.100"
@@ -82090,6 +82094,10 @@
             "target": "Package",
             "version": "[9.0.1, )"
           },
+          "Microsoft.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[9.0.1, )"
+          },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "[8.0.1, )"
@@ -82123,23 +82131,23 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.Android.Ref.34",
-            "version": "[34.0.145, 34.0.145]"
+            "version": "[34.0.147, 34.0.147]"
           },
           {
             "name": "Microsoft.Android.Runtime.34.android-arm",
-            "version": "[34.0.145, 34.0.145]"
+            "version": "[34.0.147, 34.0.147]"
           },
           {
             "name": "Microsoft.Android.Runtime.34.android-arm64",
-            "version": "[34.0.145, 34.0.145]"
+            "version": "[34.0.147, 34.0.147]"
           },
           {
             "name": "Microsoft.Android.Runtime.34.android-x64",
-            "version": "[34.0.145, 34.0.145]"
+            "version": "[34.0.147, 34.0.147]"
           },
           {
             "name": "Microsoft.Android.Runtime.34.android-x86",
-            "version": "[34.0.145, 34.0.145]"
+            "version": "[34.0.147, 34.0.147]"
           }
         ],
         "frameworkReferences": {
@@ -82166,6 +82174,10 @@
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.1, )"
+          },
+          "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[9.0.1, )"
           },
@@ -82202,11 +82214,11 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.iOS.Ref.net8.0_18.0",
-            "version": "[18.0.8316, 18.0.8316]"
+            "version": "[18.0.8319, 18.0.8319]"
           },
           {
             "name": "Microsoft.iOS.Runtime.ios-arm64.net8.0_18.0",
-            "version": "[18.0.8316, 18.0.8316]"
+            "version": "[18.0.8319, 18.0.8319]"
           }
         ],
         "frameworkReferences": {
@@ -82233,6 +82245,10 @@
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.1, )"
+          },
+          "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[9.0.1, )"
           },
@@ -82270,11 +82286,11 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.MacCatalyst.Ref.net8.0_18.0",
-            "version": "[18.0.8316, 18.0.8316]"
+            "version": "[18.0.8319, 18.0.8319]"
           },
           {
             "name": "Microsoft.MacCatalyst.Runtime.maccatalyst-x64.net8.0_18.0",
-            "version": "[18.0.8316, 18.0.8316]"
+            "version": "[18.0.8319, 18.0.8319]"
           }
         ],
         "frameworkReferences": {
@@ -82301,6 +82317,10 @@
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.1, )"
+          },
+          "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[9.0.1, )"
           },

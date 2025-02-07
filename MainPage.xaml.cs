@@ -1,31 +1,35 @@
-﻿using MauiApp1.Services; // Importa los servicios AlbaranService y LineaAlbaranService.
+﻿using MauiApp1.Services;
+using System.Linq;
 
 namespace MauiApp1
 {
-    // Define la página principal de la aplicación.
     public partial class MainPage : ContentPage
     {
-        private readonly AlbaranService _albaranService; // Servicio para manejar albaranes.
-        private readonly LineaAlbaranService _lineaAlbaranService; // Servicio para manejar líneas de albaranes.
+        private readonly BackendService _backendService; // Servicio para manejar la comunicación con el backend.
 
-        // Constructor que recibe las instancias de los servicios.
-        public MainPage(AlbaranService albaranService, LineaAlbaranService lineaAlbaranService)
+        //  Constructor que recibe la instancia del servicio BackendService.
+        public MainPage(BackendService backendService)
         {
-            InitializeComponent(); // Inicializa los componentes definidos en el archivo XAML asociado.
-
-            _albaranService = albaranService;
-            _lineaAlbaranService = lineaAlbaranService;
+            InitializeComponent();
+            _backendService = backendService;
         }
 
-        // Evento que se dispara cuando se hace clic en un botón para cargar datos de un albarán.
+        //  Evento para cargar datos de la cabecera origen.
         private async void OnLoadAlbaranClicked(object sender, EventArgs e)
         {
-            // Llama al servicio para obtener un albarán específico.
-            var albaran = await _albaranService.GetAlbaranOrigenAsync("AV2023", 1457);
+            string serie = await DisplayPromptAsync("Cargar Albarán Origen", "Introduce la serie del albarán:");
+            string numDocStr = await DisplayPromptAsync("Cargar Albarán Origen", "Introduce el número de documento:", keyboard: Keyboard.Numeric);
+
+            if (string.IsNullOrEmpty(serie) || string.IsNullOrEmpty(numDocStr) || !int.TryParse(numDocStr, out int numDoc))
+            {
+                await DisplayAlert("Error", "Debes introducir una serie y un número de documento válidos.", "OK");
+                return;
+            }
+
+            var albaran = await _backendService.GetAlbaranBySerieAndNumAsync(serie, numDoc);
 
             if (albaran != null)
             {
-                // Muestra información del albarán en una alerta.
                 await DisplayAlert("Albarán Origen",
                     $"Serie: {albaran.Serie}\n" +
                     $"Número: {albaran.NumDoc}\n" +
@@ -35,21 +39,58 @@ namespace MauiApp1
             }
             else
             {
-                await DisplayAlert("Error", "No se encontró el albarán.", "OK");
+                await DisplayAlert("Error", "No se encontró el albarán origen.", "OK");
             }
         }
 
-        // Evento que se dispara cuando se hace clic en un botón para cargar líneas de un albarán.
+        //  Evento para cargar datos de la cabecera destino.
+        private async void OnLoadAlbaranDestinoClicked(object sender, EventArgs e)
+        {
+            string serie = await DisplayPromptAsync("Cargar Albarán Destino", "Introduce la serie del albarán:");
+            string numDocStr = await DisplayPromptAsync("Cargar Albarán Destino", "Introduce el número de documento:", keyboard: Keyboard.Numeric);
+
+            if (string.IsNullOrEmpty(serie) || string.IsNullOrEmpty(numDocStr) || !int.TryParse(numDocStr, out int numDoc))
+            {
+                await DisplayAlert("Error", "Debes introducir una serie y un número de documento válidos.", "OK");
+                return;
+            }
+
+            var albaran = await _backendService.GetAlbaranBySerieAndNumAsync(serie, numDoc);
+
+            if (albaran != null)
+            {
+                await DisplayAlert("Albarán Destino",
+                    $"Serie: {albaran.Serie}\n" +
+                    $"Número: {albaran.NumDoc}\n" +
+                    $"Destinatario: {albaran.Destinatario}\n" +
+                    $"Población: {albaran.Poblacion}\n" +
+                    $"Observaciones: {albaran.Observaciones}",
+                    "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", "No se encontró el albarán destino.", "OK");
+            }
+        }
+
+        //  Evento para cargar las líneas de un albarán.
         private async void OnLoadLineasClicked(object sender, EventArgs e)
         {
-            // Llama al servicio para obtener las líneas de un albarán.
-            var lineas = await _lineaAlbaranService.GetLineasByAlbaranIdAsync(5210);
+            string idAlbaranStr = await DisplayPromptAsync("Cargar Líneas", "Introduce el ID del albarán:", keyboard: Keyboard.Numeric);
+
+            if (string.IsNullOrEmpty(idAlbaranStr) || !int.TryParse(idAlbaranStr, out int idAlbaran))
+            {
+                await DisplayAlert("Error", "Debes introducir un ID de albarán válido.", "OK");
+                return;
+            }
+
+            var lineas = await _backendService.GetLineasByAlbaranIdAsync(idAlbaran);
 
             if (lineas.Any())
             {
-                // Crea un detalle de las líneas para mostrar en una alerta.
                 string detalles = string.Join("\n", lineas.Select(l =>
                     $"Artículo: {l.CodigoArticulo}, Unidades: {l.Unidades}, Estado: {l.Estado}"));
+
                 await DisplayAlert("Líneas del Albarán", detalles, "OK");
             }
             else
