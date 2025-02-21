@@ -10,7 +10,7 @@ namespace MauiApp1.Services
     public class BackendService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "https://tu-backend-url.com/api"; // Reemplazar con la URL del backend
+        private const string BaseUrl = "http://localhost:5222/api/"; // Reemplazar con la URL del backend
 
         public BackendService()
         {
